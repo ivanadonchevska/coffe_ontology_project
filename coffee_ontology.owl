@@ -1,0 +1,682 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="file://coffee_ontology.owl"
+         xmlns="file://coffee_ontology.owl#">
+
+<owl:Ontology rdf:about="file://coffee_ontology.owl"/>
+
+<owl:ObjectProperty rdf:about="#hasBase">
+  <rdfs:domain rdf:resource="#Drink"/>
+  <rdfs:range rdf:resource="#CoffeeBase"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isBaseOf">
+  <rdfs:domain rdf:resource="#CoffeeBase"/>
+  <rdfs:range rdf:resource="#Drink"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isToppingOf">
+  <rdfs:domain rdf:resource="#CoffeeTopping"/>
+  <rdfs:range rdf:resource="#Drink"/>
+  <owl:inverseOf rdf:resource="#hasTopping"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasTopping">
+  <rdfs:domain rdf:resource="#Drink"/>
+  <rdfs:range rdf:resource="#CoffeeTopping"/>
+  <owl:inverseOf rdf:resource="#isToppingOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isMilkOf">
+  <rdfs:domain rdf:resource="#Milk"/>
+  <rdfs:range rdf:resource="#Drink"/>
+  <owl:inverseOf rdf:resource="#hasMilk"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasMilk">
+  <rdfs:domain rdf:resource="#Drink"/>
+  <rdfs:range rdf:resource="#Milk"/>
+  <owl:inverseOf rdf:resource="#isMilkOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasOriginCountry">
+  <rdfs:domain rdf:resource="#Drink"/>
+  <rdfs:range rdf:resource="#Country"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasIngredient">
+  <rdfs:domain rdf:resource="#Drink"/>
+  <rdfs:range rdf:resource="#Drink"/>
+  <owl:inverseOf rdf:resource="#isIngredientOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isIngredientOf">
+  <rdfs:domain rdf:resource="#Drink"/>
+  <rdfs:range rdf:resource="#Drink"/>
+  <owl:inverseOf rdf:resource="#hasIngredient"/>
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:about="#isKnownWorldwide">
+  <rdfs:domain rdf:resource="#Coffee"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#isProteinRich">
+  <rdfs:domain rdf:resource="#Coffee"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#isServedCold">
+  <rdfs:domain rdf:resource="#Coffee"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasCaffeineContentValue">
+  <rdfs:domain rdf:resource="#Coffee"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasCalorificContentValue">
+  <rdfs:domain rdf:resource="#Coffee"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasSweetness">
+  <rdfs:domain rdf:resource="#CoffeeTopping"/>
+  <rdfs:range rdf:resource="#Level"/>
+</owl:DatatypeProperty>
+
+<owl:Class rdf:about="#DomainThing">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Country">
+  <rdfs:subClassOf rdf:resource="#DomainThing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Drink">
+  <rdfs:subClassOf rdf:resource="#DomainThing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Coffee">
+  <rdfs:subClassOf rdf:resource="#Drink"/>
+</owl:Class>
+
+<owl:Class rdf:about="#CoffeeBase">
+  <rdfs:subClassOf rdf:resource="#DomainThing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#CoffeeTopping">
+  <rdfs:subClassOf rdf:resource="#DomainThing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Milk">
+  <rdfs:subClassOf rdf:resource="#Drink"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Level">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#NamedCoffee">
+  <rdfs:subClassOf rdf:resource="#Coffee"/>
+</owl:Class>
+
+<owl:Class rdf:about="#High">
+  <rdfs:subClassOf rdf:resource="#Level"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Medium">
+  <rdfs:subClassOf rdf:resource="#Level"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Low">
+  <rdfs:subClassOf rdf:resource="#Level"/>
+</owl:Class>
+
+<owl:Class rdf:about="#NoLevel">
+  <rdfs:subClassOf rdf:resource="#Level"/>
+</owl:Class>
+
+<owl:Class rdf:about="#WholeMilk">
+  <rdfs:subClassOf rdf:resource="#Milk"/>
+</owl:Class>
+
+<owl:Class rdf:about="#AlmondMilk">
+  <rdfs:subClassOf rdf:resource="#Milk"/>
+</owl:Class>
+
+<owl:Class rdf:about="#OatMilk">
+  <rdfs:subClassOf rdf:resource="#Milk"/>
+</owl:Class>
+
+<owl:Class rdf:about="#LactoseFreeMilk">
+  <rdfs:subClassOf rdf:resource="#Milk"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Water">
+  <rdfs:subClassOf rdf:resource="#CoffeeBase"/>
+</owl:Class>
+
+<owl:Class rdf:about="#ArabicaBean">
+  <rdfs:subClassOf rdf:resource="#CoffeeBase"/>
+</owl:Class>
+
+<owl:Class rdf:about="#RobustaBean">
+  <rdfs:subClassOf rdf:resource="#CoffeeBase"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Sugar">
+  <rdfs:subClassOf rdf:resource="#CoffeeBase"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Whiskey">
+  <rdfs:subClassOf rdf:resource="#CoffeeBase"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Ice">
+  <rdfs:subClassOf rdf:resource="#CoffeeBase"/>
+</owl:Class>
+
+<owl:Class rdf:about="#PistachioSyrup">
+  <rdfs:subClassOf rdf:resource="#CoffeeBase"/>
+</owl:Class>
+
+<owl:Class rdf:about="#HazelnutSyrup">
+  <rdfs:subClassOf rdf:resource="#CoffeeBase"/>
+</owl:Class>
+
+<owl:Class rdf:about="#CocoaPowder">
+  <rdfs:subClassOf rdf:resource="#CoffeeBase"/>
+</owl:Class>
+
+<owl:Class rdf:about="#MacadamiaNutSyrup">
+  <rdfs:subClassOf rdf:resource="#CoffeeBase"/>
+</owl:Class>
+
+<owl:Class rdf:about="#NaturalTopping">
+  <rdfs:subClassOf rdf:resource="#CoffeeTopping"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#CoffeeTopping"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasSweetness"/>
+          <owl:hasValue rdf:resource="#NoLevel"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#LiquidTopping">
+  <rdfs:subClassOf rdf:resource="#CoffeeTopping"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Caramel">
+  <rdfs:subClassOf rdf:resource="#LiquidTopping"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#LiquidTopping"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasSweetness"/>
+          <owl:hasValue rdf:resource="#High"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Chocolate">
+  <rdfs:subClassOf rdf:resource="#LiquidTopping"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#LiquidTopping"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasSweetness"/>
+          <owl:hasValue rdf:resource="#High"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Vanilla">
+  <rdfs:subClassOf rdf:resource="#LiquidTopping"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#LiquidTopping"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasSweetness"/>
+          <owl:hasValue rdf:resource="#High"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#MilkFoam">
+  <rdfs:subClassOf rdf:resource="#LiquidTopping"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#LiquidTopping"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasSweetness"/>
+          <owl:hasValue rdf:resource="#Medium"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#FruitTopping">
+  <rdfs:subClassOf rdf:resource="#CoffeeTopping"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Raspberry">
+  <rdfs:subClassOf rdf:resource="#FruitTopping"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#FruitTopping"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasSweetness"/>
+          <owl:hasValue rdf:resource="#Low"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Strawberry">
+  <rdfs:subClassOf rdf:resource="#FruitTopping"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#FruitTopping"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasSweetness"/>
+          <owl:hasValue rdf:resource="#Low"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Coconut">
+  <rdfs:subClassOf rdf:resource="#FruitTopping"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#FruitTopping"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasSweetness"/>
+          <owl:hasValue rdf:resource="#Low"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#NutTopping">
+  <rdfs:subClassOf rdf:resource="#CoffeeTopping"/>
+</owl:Class>
+
+<owl:Class rdf:about="#CrushedMacadamiaNuts">
+  <rdfs:subClassOf rdf:resource="#NutTopping"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#NutTopping"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasSweetness"/>
+          <owl:hasValue rdf:resource="#Low"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#CrushedHazelnuts">
+  <rdfs:subClassOf rdf:resource="#NutTopping"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#NutTopping"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasSweetness"/>
+          <owl:hasValue rdf:resource="#Medium"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#CrushedPistachios">
+  <rdfs:subClassOf rdf:resource="#NutTopping"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#NutTopping"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasSweetness"/>
+          <owl:hasValue rdf:resource="#Medium"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#PowderTopping">
+  <rdfs:subClassOf rdf:resource="#CoffeeTopping"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Cardamom">
+  <rdfs:subClassOf rdf:resource="#PowderTopping"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#PowderTopping"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasSweetness"/>
+          <owl:hasValue rdf:resource="#Low"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#ProteinPowder">
+  <rdfs:subClassOf rdf:resource="#PowderTopping"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#PowderTopping"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasSweetness"/>
+          <owl:hasValue rdf:resource="#Medium"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Cinnamon">
+  <rdfs:subClassOf rdf:resource="#PowderTopping"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#PowderTopping"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasSweetness"/>
+          <owl:hasValue rdf:resource="#Low"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#SnackTopping">
+  <rdfs:subClassOf rdf:resource="#CoffeeTopping"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Cookie">
+  <rdfs:subClassOf rdf:resource="#SnackTopping"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#SnackTopping"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasSweetness"/>
+          <owl:hasValue rdf:resource="#High"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#ProteinBar">
+  <rdfs:subClassOf rdf:resource="#SnackTopping"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#SnackTopping"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasSweetness"/>
+          <owl:hasValue rdf:resource="#High"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#IceCream">
+  <rdfs:subClassOf rdf:resource="#SnackTopping"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#SnackTopping"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasSweetness"/>
+          <owl:hasValue rdf:resource="#High"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#ArabianCoffee">
+  <rdfs:subClassOf rdf:resource="#Coffee"/>
+</owl:Class>
+
+<owl:Class rdf:about="#BrazilianCoffee">
+  <rdfs:subClassOf rdf:resource="#Coffee"/>
+</owl:Class>
+
+<owl:Class rdf:about="#ColombianCoffee">
+  <rdfs:subClassOf rdf:resource="#Coffee"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Espresso">
+  <rdfs:subClassOf rdf:resource="#NamedCoffee"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Cappuccino">
+  <rdfs:subClassOf rdf:resource="#NamedCoffee"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Latte">
+  <rdfs:subClassOf rdf:resource="#NamedCoffee"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Macchiato">
+  <rdfs:subClassOf rdf:resource="#NamedCoffee"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Mocha">
+  <rdfs:subClassOf rdf:resource="#NamedCoffee"/>
+</owl:Class>
+
+<owl:Class rdf:about="#GreekCoffee">
+  <rdfs:subClassOf rdf:resource="#NamedCoffee"/>
+</owl:Class>
+
+<owl:Class rdf:about="#IrishCoffee">
+  <rdfs:subClassOf rdf:resource="#NamedCoffee"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Frappe">
+  <rdfs:subClassOf rdf:resource="#NamedCoffee"/>
+</owl:Class>
+
+<owl:Class rdf:about="#FlatWhite">
+  <rdfs:subClassOf rdf:resource="#NamedCoffee"/>
+</owl:Class>
+
+<owl:Class rdf:about="#PistachioLatte">
+  <rdfs:subClassOf rdf:resource="#NamedCoffee"/>
+</owl:Class>
+
+<owl:Class rdf:about="#HazelnutLatte">
+  <rdfs:subClassOf rdf:resource="#NamedCoffee"/>
+</owl:Class>
+
+<owl:Class rdf:about="#TurkishCoffee">
+  <rdfs:subClassOf rdf:resource="#NamedCoffee"/>
+</owl:Class>
+
+<owl:Class rdf:about="#MacadamiaNutCoffee">
+  <rdfs:subClassOf rdf:resource="#NamedCoffee"/>
+</owl:Class>
+
+<owl:Class rdf:about="#LowCaffeineCoffee">
+  <rdfs:subClassOf rdf:resource="#Coffee"/>
+</owl:Class>
+
+<owl:Class rdf:about="#MediumCaffeineCoffee">
+  <rdfs:subClassOf rdf:resource="#Coffee"/>
+</owl:Class>
+
+<owl:Class rdf:about="#HighCaffeineCoffee">
+  <rdfs:subClassOf rdf:resource="#Coffee"/>
+</owl:Class>
+
+<owl:Class rdf:about="#PopularCoffee">
+  <rdfs:subClassOf rdf:resource="#Coffee"/>
+</owl:Class>
+
+<owl:Class rdf:about="#ProteinCoffee">
+  <rdfs:subClassOf rdf:resource="#Coffee"/>
+</owl:Class>
+
+<owl:Class rdf:about="#IceCreamCoffee">
+  <rdfs:subClassOf rdf:resource="#Coffee"/>
+</owl:Class>
+
+<owl:Class rdf:about="#CoconutCoffee">
+  <rdfs:subClassOf rdf:resource="#Coffee"/>
+</owl:Class>
+
+<owl:NamedIndividual rdf:about="#Brazil">
+  <rdf:type rdf:resource="#Country"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Colombia">
+  <rdf:type rdf:resource="#Country"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Ethiopia">
+  <rdf:type rdf:resource="#Country"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Guatemala">
+  <rdf:type rdf:resource="#Country"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Hawaii">
+  <rdf:type rdf:resource="#Country"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#India">
+  <rdf:type rdf:resource="#Country"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Kenya">
+  <rdf:type rdf:resource="#Country"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Mexico">
+  <rdf:type rdf:resource="#Country"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Peru">
+  <rdf:type rdf:resource="#Country"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Yemen">
+  <rdf:type rdf:resource="#Country"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Italy">
+  <rdf:type rdf:resource="#Country"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Turkey">
+  <rdf:type rdf:resource="#Country"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Ireland">
+  <rdf:type rdf:resource="#Country"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Greece">
+  <rdf:type rdf:resource="#Country"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Australia">
+  <rdf:type rdf:resource="#Country"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HotLatte">
+  <rdf:type rdf:resource="#Latte"/>
+  <isServedCold rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isServedCold>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IceProteinCappuccino">
+  <rdf:type rdf:resource="#Cappuccino"/>
+  <isProteinRich rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isProteinRich>
+  <isServedCold rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isServedCold>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ProteinCappuccino">
+  <rdf:type rdf:resource="#Cappuccino"/>
+  <isProteinRich rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isProteinRich>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IceMocha">
+  <rdf:type rdf:resource="#Mocha"/>
+  <isServedCold rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isServedCold>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CalorificMacchiato">
+  <rdf:type rdf:resource="#Macchiato"/>
+  <hasCalorificContentValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">100</hasCalorificContentValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StrongLatte">
+  <rdf:type rdf:resource="#Latte"/>
+  <hasCaffeineContentValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">90</hasCaffeineContentValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StrongMacadamiaNutCoffee">
+  <rdf:type rdf:resource="#MacadamiaNutCoffee"/>
+  <hasCaffeineContentValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">85</hasCaffeineContentValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LightEspresso">
+  <rdf:type rdf:resource="#Espresso"/>
+  <hasCaffeineContentValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">20</hasCaffeineContentValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WakeUpCoffee">
+  <rdf:type rdf:resource="#Espresso"/>
+  <hasCaffeineContentValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">95</hasCaffeineContentValue>
+  <isKnownWorldwide rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isKnownWorldwide>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StrongIcePistachioLatte">
+  <rdf:type rdf:resource="#PistachioLatte"/>
+  <hasCaffeineContentValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">87</hasCaffeineContentValue>
+  <isServedCold rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isServedCold>
+  <isKnownWorldwide rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isKnownWorldwide>
+</owl:NamedIndividual>
+
+
+</rdf:RDF>
